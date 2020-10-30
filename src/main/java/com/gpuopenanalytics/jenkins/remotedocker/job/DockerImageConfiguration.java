@@ -47,15 +47,18 @@ public class DockerImageConfiguration extends AbstractDockerConfiguration {
 
     private final String image;
     private final boolean forcePull;
+    private String maxRetries;
 
     @DataBoundConstructor
     public DockerImageConfiguration(List<ConfigItem> configItemList,
                                     List<VolumeConfiguration> volumes,
                                     String image,
-                                    boolean forcePull) {
+                                    boolean forcePull,
+                                    String maxRetries) {
         super(configItemList, volumes);
         this.image = image;
         this.forcePull = forcePull;
+        this.maxRetries=maxRetries;
     }
 
     public String getImage() {
@@ -64,6 +67,10 @@ public class DockerImageConfiguration extends AbstractDockerConfiguration {
 
     public boolean isForcePull() {
         return forcePull;
+    }
+
+    public String getMaxRetries() {
+        return maxRetries;
     }
 
     @Override
